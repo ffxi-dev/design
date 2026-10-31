@@ -88,6 +88,8 @@ Whatever the roles say, pills (`.chip`), labels (`.label`), and `<kbd>` are alwa
 
 A site restyles any of these for its own density in its own stylesheet, loaded after `family.css`.
 
+The element rules (`button`, `input`, `kbd`) style every such element on the page. A site that sizes its own controls on a CSS reset, as res does on Tailwind, imports `family.css` into a cascade layer after the reset and reverts those three element rules inside that layer; res's `src/styles/global.css` shows how.
+
 ### State frames
 
 Markup: `.state-frame` holds `.state-frame-icon` (four `.state-bracket` spans, `tl`, `tr`, `bl`, `br`, then the icon glyph), `.state-frame-title`, `.state-frame-body`, and `.state-frame-action`. Use a glyph as the icon: `◯` waiting, `∅` nothing matches, `⚠` error (set the icon's colour to `--err`).

@@ -1,0 +1,332 @@
+/* sruon.dev family layer: tokens, base type, the wordmark, and the shared controls. DESIGN.md explains each part. */
+/* Each site sets its own body font, density, and type roles (--<site>-prose, --<site>-data) in its own stylesheet. */
+
+@font-face {
+  font-family: 'Inter Tight';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('./fonts/inter-tight.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 100 800;
+  font-display: swap;
+  src: url('./fonts/jetbrains-mono.woff2') format('woff2');
+}
+
+:root {
+  /* The family defines one dark theme; color-scheme keeps browser controls dark when the OS asks for light. */
+  color-scheme: dark;
+
+  --bg-base: #21252b;
+  --bg-surface: #282c34;
+  --bg-raised: #2c313a;
+  --bg-sunken: #1b1f25;
+  --bg-hover: #323842;
+  --border: #3a4049;
+  --border-s: #4b5263;
+
+  --fg: #abb2bf;
+  --fg-2: #828997;
+  --fg-3: #5c6370;
+  --fg-muted: #4b5263;
+
+  --accent: #61afef;
+  --accent-glow: rgba(97, 175, 239, 0.35);
+  --accent-dim: #3a6a90;
+  --gold: #e5c07b;
+
+  --ok: #98c379;
+  --warn: #e5c07b;
+  --err: #e06c75;
+
+  --sel: rgba(97, 175, 239, 0.1);
+  --sel-strong: rgba(97, 175, 239, 0.18);
+
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  --font-sans: 'Inter Tight', ui-sans-serif, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  background: var(--bg-base);
+  color: var(--fg);
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+code,
+pre,
+kbd {
+  font-family: var(--font-mono);
+}
+
+::selection {
+  background: var(--sel-strong);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-s);
+  border-radius: 6px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+/* Wordmark: sruon ◆ <site>. sruon links to sruon.dev, the site name to the site's root. */
+.wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--fg);
+  user-select: none;
+  white-space: nowrap;
+}
+.wordmark a {
+  color: inherit;
+  text-decoration: none;
+}
+.wordmark .wordmark-prefix {
+  color: var(--fg-2);
+  font-weight: 400;
+}
+.wordmark a:hover {
+  color: var(--accent);
+}
+.wordmark-glyph {
+  display: inline-block;
+  color: var(--accent);
+  vertical-align: -2px;
+}
+
+/* Controls: squared, hairline borders. */
+button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 26px;
+  padding: 0 10px;
+  font: 500 11.5px var(--font-mono);
+  letter-spacing: 0.01em;
+  color: var(--fg);
+  background: var(--bg-raised);
+  border: 1px solid var(--border-s);
+  border-radius: 3px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+button:hover {
+  background: var(--bg-hover);
+}
+button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+button.ghost {
+  background: transparent;
+  border-color: transparent;
+  color: var(--fg-2);
+}
+button.ghost:hover {
+  color: var(--fg);
+  background: var(--bg-hover);
+}
+button.primary {
+  color: var(--accent);
+  border-color: var(--accent-dim);
+}
+
+/* :where keeps this at the specificity of a bare `input`, so a site's own class rules win. */
+input:where(:not([type='checkbox'], [type='radio'], [type='range'], [type='file'], [type='color'])) {
+  height: 22px;
+  padding: 0 6px;
+  font: 11.5px var(--font-mono);
+  color: var(--fg);
+  background: var(--bg-sunken);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+}
+input::placeholder {
+  color: var(--fg-muted);
+}
+input:focus {
+  outline: none;
+  border-color: var(--accent-dim);
+  box-shadow: 0 0 0 1px var(--accent-dim);
+}
+button:focus-visible,
+a:focus-visible {
+  outline: 1px solid var(--accent);
+  outline-offset: 1px;
+}
+
+/* Label: column headers (put it on th) and field names. Always mono. */
+.label {
+  font: 500 9.5px var(--font-mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--fg-3);
+}
+
+/* Pill: always mono. Tones reuse the status tokens. */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  height: 18px;
+  padding: 0 6px;
+  font: 500 10.5px var(--font-mono);
+  letter-spacing: 0.01em;
+  line-height: 1;
+  white-space: nowrap;
+  border: 1px solid;
+  border-radius: 3px;
+  color: var(--fg-2);
+  background: rgba(130, 137, 151, 0.1);
+  border-color: rgba(130, 137, 151, 0.25);
+}
+.chip.green {
+  color: var(--ok);
+  background: rgba(152, 195, 121, 0.12);
+  border-color: rgba(152, 195, 121, 0.3);
+}
+.chip.amber {
+  color: var(--warn);
+  background: rgba(229, 192, 123, 0.12);
+  border-color: rgba(229, 192, 123, 0.3);
+}
+.chip.blue {
+  color: var(--accent);
+  background: rgba(97, 175, 239, 0.12);
+  border-color: rgba(97, 175, 239, 0.3);
+}
+.chip.red {
+  color: var(--err);
+  background: rgba(224, 108, 117, 0.12);
+  border-color: rgba(224, 108, 117, 0.3);
+}
+
+/* Kbd: keyboard hint. Always mono. */
+kbd {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  font: 10px var(--font-mono);
+  color: var(--fg-2);
+  background: var(--bg-raised);
+  border: 1px solid var(--border-s);
+  border-radius: 2px;
+  vertical-align: baseline;
+}
+
+/* State frame: the empty, error, and 404 panel. The only place corner brackets appear. */
+.state-frame {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 14px;
+  padding: 40px 24px;
+  min-height: 280px;
+}
+.state-frame-icon {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--border-s);
+  border-radius: 4px;
+  background: var(--bg-sunken);
+  color: var(--fg-3);
+  font-size: 24px;
+  font-family: var(--font-mono);
+  user-select: none;
+}
+.state-bracket {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  pointer-events: none;
+  border-color: var(--accent);
+}
+.state-bracket.tl {
+  top: -1px;
+  left: -1px;
+  border-top: 1px solid;
+  border-left: 1px solid;
+}
+.state-bracket.tr {
+  top: -1px;
+  right: -1px;
+  border-top: 1px solid;
+  border-right: 1px solid;
+}
+.state-bracket.bl {
+  bottom: -1px;
+  left: -1px;
+  border-bottom: 1px solid;
+  border-left: 1px solid;
+}
+.state-bracket.br {
+  bottom: -1px;
+  right: -1px;
+  border-bottom: 1px solid;
+  border-right: 1px solid;
+}
+.state-frame-title {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--fg);
+}
+.state-frame-body {
+  font-size: 12.5px;
+  color: var(--fg-2);
+  max-width: 380px;
+  line-height: 1.55;
+}
+.state-frame-body code {
+  color: var(--accent);
+  background: rgba(97, 175, 239, 0.08);
+  padding: 1px 4px;
+  border-radius: 2px;
+}
+.state-frame-action {
+  margin-top: 6px;
+  display: inline-flex;
+  gap: 6px;
+}

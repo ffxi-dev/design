@@ -1,22 +1,22 @@
 # design
 
-The sruon.dev family layer: one stylesheet (`family.css`), the crystal glyph (`glyph.svg`), the tokens as data (`tokens.json`), the two fonts, and a wordmark for React, Astro, Go, and Jinja. `DESIGN.md` describes the system.
+Shared styles for the sruon.dev sites: colours, fonts, buttons, inputs, and the `sruon ◆ site` wordmark. Lens, res, Magian, and Mogsafe all use it. [DESIGN.md](DESIGN.md) has the rules.
 
-One tag releases it three ways. Pin the tag; Renovate bumps it.
+Use a tagged version. Renovate opens a pull request when a new one comes out.
 
-## npm (React, Astro, Vite)
+## JavaScript
 
 ```json
 "@ffxi-dev/design": "github:ffxi-dev/design#v1.0.0"
 ```
 
 ```js
-import '@ffxi-dev/design/family.css';          // before the site's own CSS; the bundler copies the fonts
+import '@ffxi-dev/design/family.css';
 import { Wordmark } from '@ffxi-dev/design/react';
 import tokens from '@ffxi-dev/design/tokens.json';
 ```
 
-In Astro: `import Wordmark from '@ffxi-dev/design/astro'`. In CSS: `@import '@ffxi-dev/design/family.css';`.
+Import `family.css` before your own CSS. Astro has its own wordmark: `import Wordmark from '@ffxi-dev/design/astro'`.
 
 ## Go
 
@@ -25,14 +25,14 @@ go get github.com/ffxi-dev/design@v1.0.0
 ```
 
 ```go
-mux.Handle("GET /fonts/", http.FileServerFS(design.Fonts)) // family.css asks for fonts/<name>.woff2 beside itself
-css := design.CSS + siteCSS                                // serve from the folder that holds fonts/, such as /style.css
-wordmark := design.Wordmark("mogsafe")                     // template.HTML
+mux.Handle("GET /fonts/", http.FileServerFS(design.Fonts))
+css := design.CSS + siteCSS
+wordmark := design.Wordmark("mogsafe")
 ```
 
-`design.Glyph` is the SVG and `design.Tokens` the JSON.
+Serve the CSS from the folder that holds `fonts/`: the stylesheet loads `fonts/<name>.woff2` next to itself.
 
-## Python (Jinja)
+## Python
 
 ```toml
 [project]
@@ -44,7 +44,8 @@ ffxi-dev-design = { git = "https://github.com/ffxi-dev/design", tag = "v1.0.0" }
 
 ```python
 import ffxi_design
-app.mount("/design", StaticFiles(directory=ffxi_design.STATIC))   # /design/family.css, /design/fonts/...
+
+app.mount("/design", StaticFiles(directory=ffxi_design.STATIC))
 templates = Jinja2Templates(directory=[own_templates, ffxi_design.TEMPLATES])
 ```
 
@@ -56,12 +57,12 @@ templates = Jinja2Templates(directory=[own_templates, ffxi_design.TEMPLATES])
 
 ## Fonts
 
-Inter Tight and JetBrains Mono, from Fontsource's variable builds (latin subset), under the SIL Open Font License: `fonts/inter-tight-OFL.txt` and `fonts/jetbrains-mono-OFL.txt`.
+Inter Tight and JetBrains Mono, from Fontsource, under the SIL Open Font License (see `fonts/`).
 
-## Checks
+## Testing
 
 ```bash
 go vet ./... && go test ./...
 ```
 
-With `npm` and `uv` on the path, the tests also pack the npm and Python packages and check that both carry the `family.css` Go embeds. `demo.html` shows every shared class; open it in a browser after a change.
+If `npm` and `uv` are installed, the tests also check that the npm and Python packages ship the same `family.css` as the Go module. Open `demo.html` in a browser to see every shared style.

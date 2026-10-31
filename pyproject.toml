@@ -1,0 +1,19 @@
+[project]
+name = "ffxi-dev-design"
+version = "1.0.0"
+description = "The sruon.dev family layer: stylesheet, glyph, tokens, fonts, and a Jinja wordmark macro"
+requires-python = ">=3.10"
+
+[build-system]
+requires = ["hatchling==1.27.0"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["python/ffxi_design"]
+
+# The files live once, at the repository root, for npm and Go too.
+[tool.hatch.build.targets.wheel.force-include]
+"family.css" = "ffxi_design/static/family.css"
+"glyph.svg" = "ffxi_design/static/glyph.svg"
+"tokens.json" = "ffxi_design/static/tokens.json"
+"fonts" = "ffxi_design/static/fonts"

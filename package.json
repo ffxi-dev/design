@@ -1,0 +1,24 @@
+{
+  "name": "@ffxi-dev/design",
+  "version": "1.0.0",
+  "description": "The sruon.dev family layer: stylesheet, glyph, tokens, fonts, and React and Astro wordmarks",
+  "type": "module",
+  "repository": "github:ffxi-dev/design",
+  "files": ["family.css", "glyph.svg", "tokens.json", "fonts", "react", "astro"],
+  "exports": {
+    "./family.css": "./family.css",
+    "./glyph.svg": "./glyph.svg",
+    "./tokens.json": "./tokens.json",
+    "./fonts/*": "./fonts/*",
+    "./react": "./react/Wordmark.js",
+    "./astro": "./astro/Wordmark.astro"
+  },
+  "peerDependencies": {
+    "react": ">=18"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    }
+  }
+}

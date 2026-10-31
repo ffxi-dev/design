@@ -1,6 +1,7 @@
 [project]
 name = "ffxi-dev-design"
 version = "1.0.0"
+license = "MIT"
 description = "The sruon.dev family layer: stylesheet, glyph, tokens, fonts, and a Jinja wordmark macro"
 requires-python = ">=3.10"
 

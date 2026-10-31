@@ -57,7 +57,7 @@ templates = Jinja2Templates(directory=[own_templates, ffxi_design.TEMPLATES])
 
 ## Fonts
 
-Inter Tight and JetBrains Mono, from Fontsource, under the SIL Open Font License (see `fonts/`).
+Inter Tight and JetBrains Mono, from Fontsource, under the SIL Open Font License (see `fonts/`). Everything else is MIT (see `LICENSE`).
 
 ## Testing
 

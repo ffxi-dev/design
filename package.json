@@ -1,6 +1,7 @@
 {
   "name": "@ffxi-dev/design",
   "version": "1.0.0",
+  "license": "MIT",
   "description": "The sruon.dev family layer: stylesheet, glyph, tokens, fonts, and React and Astro wordmarks",
   "type": "module",
   "repository": "github:ffxi-dev/design",

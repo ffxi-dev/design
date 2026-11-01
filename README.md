@@ -7,7 +7,7 @@ Use a tagged version. Renovate opens a pull request when a new one comes out.
 ## JavaScript
 
 ```json
-"@ffxi-dev/design": "github:ffxi-dev/design#v1.0.0"
+"@ffxi-dev/design": "github:ffxi-dev/design#v1.1.0"
 ```
 
 ```js
@@ -21,7 +21,7 @@ Import `family.css` before your own CSS. Astro has its own wordmark: `import Wor
 ## Go
 
 ```bash
-go get github.com/ffxi-dev/design@v1.0.0
+go get github.com/ffxi-dev/design@v1.1.0
 ```
 
 ```go
@@ -39,7 +39,7 @@ Serve the CSS from the folder that holds `fonts/`: the stylesheet loads `fonts/<
 dependencies = ["ffxi-dev-design"]
 
 [tool.uv.sources]
-ffxi-dev-design = { git = "https://github.com/ffxi-dev/design", tag = "v1.0.0" }
+ffxi-dev-design = { git = "https://github.com/ffxi-dev/design", tag = "v1.1.0" }
 ```
 
 ```python

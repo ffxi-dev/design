@@ -79,6 +79,7 @@ Whatever the roles say, pills (`.chip`), labels (`.label`), and `<kbd>` are alwa
 | Class or element | Use |
 |---|---|
 | `.wordmark` | The family wordmark. |
+| `.toolbar` | The bar across the top of a page: 36px, `--bg-surface`, a hairline below, items 12px apart. |
 | `button`, `button.primary`, `button.ghost` | Squared, 26px, 11.5px mono, 3px radius. |
 | `input` (text-like types) | 22px, 11.5px mono, 2px radius, sunken well, `--accent-dim` focus ring. |
 | `.label` | Column headers (put it on `th`) and field names: 9.5px uppercase mono, 0.06em spacing, `--fg-3`. |
@@ -112,7 +113,7 @@ Markup: `.state-frame` holds `.state-frame-icon` (four `.state-bracket` spans, `
 All mono, dense, a developer tool.
 
 - Body 12.5px, line height 1.45. Table rows 22px, 11.5px text. Column headers 9.5px. Status bar 22px, 10.5px text. Inputs 22px.
-- Its own components: `.toolbar` (36px), `.statusbar` (22px), `.session-tabs`, `.filter-bar`, `.search-bar`, `.packet-row` with `.row-cursor`, `.field-row`, `.hex-grid` with `.hex-header`, `.byte`, and `.ac`, `.timeline`, `.watch-bar`, and `.banner`.
+- Its own components: `.statusbar` (22px), `.session-tabs`, `.filter-bar`, `.search-bar`, `.packet-row` with `.row-cursor`, `.field-row`, `.hex-grid` with `.hex-header`, `.byte`, and `.ac`, `.timeline`, `.watch-bar`, and `.banner`.
 - Its state frames: `◯` waiting for packets, `∅` no packets match these filters, `∅` no matches for a search, and `⚠` (in `--err`) when schemas fail to load.
 
 ### res

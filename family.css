@@ -128,6 +128,18 @@ kbd {
   vertical-align: -2px;
 }
 
+/* Toolbar: the 36px bar across the top of a page, holding the wordmark and the page's controls. */
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 36px;
+  padding: 0 12px;
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
 /* Controls: squared, hairline borders. */
 button {
   display: inline-flex;

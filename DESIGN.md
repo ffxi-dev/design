@@ -106,6 +106,18 @@ Markup: `.state-frame` holds `.state-frame-icon` (four `.state-bracket` spans, `
 - **Data is mono.** Never set data in body prose sizes.
 - **Corner brackets only in state frames.**
 
+## Graphs
+
+Draw a graph only when it shows what the numbers beside it hide: a spread, a second peak, a drift. Otherwise print the number.
+
+- **Enough data.** Below a stated floor (say, 30 rounds), draw nothing and print the number with its sample size.
+- **Honest scales.** A bar that shows an amount starts at zero; a range may sit on an axis cut to the data, with ticks saying where. Name the unit. Show the sample size, and a rate's interval. One axis per graph: two measures get two graphs.
+- **Colour.** Data marks wear `--accent` (5.5:1 or more on every surface). Context, such as a second series or doubtful reads, wears `--fg-2` (3.7:1 or more). `--fg-3` is too faint for marks. Gridlines and axes are solid 1px `--border`. `--ok`, `--warn`, and `--err` only where the mark means that state. A graph that needs a third colour should be a table.
+- **Text never wears the data colour.** Ticks, labels, and values use the site's label grey or `--fg`, in the data font, with tabular figures on axes.
+- **Thin marks.** Bars at most 24px thick with a 2px gap between touching bars; lines 2px. Square corners, no gradients, as everywhere else.
+- **Hover and focus.** Each mark shows its value on hover and on keyboard focus, over a hit area larger than the mark. The tooltip repeats what the page already says; it never holds the only copy.
+- **Inline SVG, no chart library,** until a page needs more chart code than it can carry by hand.
+
 ## Sites
 
 ### lens

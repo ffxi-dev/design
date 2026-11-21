@@ -1,6 +1,6 @@
 # sruon.dev design
 
-The sruon.dev sites (lens, res, Magian, Mogsafe) are one family. They share tokens, type, the wordmark, and a few controls, all in `family.css`. Each site picks its own density and components on top.
+The sruon.dev sites (lens, res, Mogsafe, Scholar) are one family. They share tokens, type, the wordmark, and a few controls, all in `family.css`. Each site picks its own density and components on top.
 
 The system was first drawn as HTML, CSS, and JSX prototypes outside these repositories; lens shipped it first, and this document moved here from `lens/docs/design-system.md` when the family layer became its own package.
 
@@ -60,8 +60,8 @@ Each site sets two roles in its own stylesheet and uses them everywhere:
 |---|---|---|
 | lens | mono | mono |
 | res | sans | mono |
-| Magian | sans | mono |
 | Mogsafe | sans | mono |
+| Scholar | sans | mono |
 
 Whatever the roles say, pills (`.chip`), labels (`.label`), and `<kbd>` are always mono, and the wordmark is always sans.
 
@@ -72,7 +72,7 @@ Whatever the roles say, pills (`.chip`), labels (`.label`), and `<kbd>` are alwa
 - React: `import { Wordmark } from '@ffxi-dev/design/react'`, then `<Wordmark site="lens" />`.
 - Astro: `import Wordmark from '@ffxi-dev/design/astro'`, then `<Wordmark site="res" />`.
 - Go: `design.Wordmark("mogsafe")` returns `template.HTML`.
-- Jinja: `{% from "ffxi_design/wordmark.html" import wordmark %}`, then `{{ wordmark("magian") }}`.
+- Jinja: `{% from "ffxi_design/wordmark.html" import wordmark %}`, then `{{ wordmark("scholar") }}`.
 
 ## Shared components
 
@@ -132,6 +132,6 @@ All mono, dense, a developer tool.
 
 Sans chrome, mono data, AG Grid tables, 13.5px body.
 
-### Magian and Mogsafe
+### Mogsafe
 
-Sans chrome, mono data. Magian's request pages bracket their main panel, the one exception to the bracket rule. Mogsafe uses lens's density.
+Sans chrome, mono data, lens's density.

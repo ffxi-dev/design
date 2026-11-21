@@ -1,6 +1,6 @@
 # design
 
-Shared styles for the sruon.dev sites: colours, fonts, buttons, inputs, and the `sruon ◆ site` wordmark. Lens, res, Magian, and Mogsafe all use it. [DESIGN.md](DESIGN.md) has the rules.
+Shared styles for the sruon.dev sites: colours, fonts, buttons, inputs, and the `sruon ◆ site` wordmark. Lens, res, Mogsafe, and Scholar all use it. [DESIGN.md](DESIGN.md) has the rules.
 
 Use a tagged version. Renovate opens a pull request when a new one comes out.
 
@@ -52,7 +52,7 @@ templates = Jinja2Templates(directory=[own_templates, ffxi_design.TEMPLATES])
 ```jinja
 {% from "ffxi_design/wordmark.html" import wordmark %}
 <link rel="stylesheet" href="/design/family.css">
-{{ wordmark("magian") }}
+{{ wordmark("scholar") }}
 ```
 
 ## Fonts

@@ -1,6 +1,6 @@
 # design
 
-The sruon.dev family layer: tokens, base type, the wordmark, a few shared controls, and the fonts, shipped from one tag as an npm package (lens, res), a Go module (Mogsafe), and a Python package (Magian). `DESIGN.md` is the design document; `README.md` shows how each app installs it. Public, so every app and build fetches it without keys.
+The sruon.dev family layer: tokens, base type, the wordmark, a few shared controls, and the fonts, shipped from one tag as an npm package (lens, res), a Go module (Mogsafe), and a Python package (Scholar). `DESIGN.md` is the design document; `README.md` shows how each app installs it. Public, so every app and build fetches it without keys.
 
 ## Rules
 
